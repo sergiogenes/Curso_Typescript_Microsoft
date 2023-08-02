@@ -1,12 +1,10 @@
-"use strict";
-/*  Module 8: Organize code using TypeScript namespaces
-    Lab Start */
+/// <reference path="module08_loans.ts" />
 /*  TODO Create LoanPrograms namespace. */
 var LoanPrograms;
 (function (LoanPrograms) {
     /*  TODO Update the calculateInterestOnlyLoanPayment function. */
     function calculateInterestOnlyLoanPayment(loanTerms) {
-        let payment;
+        var payment;
         payment =
             loanTerms.principle * calculateInterestRate(loanTerms.interestRate);
         return 'The interest only loan payment is ' + payment.toFixed(2);
@@ -14,8 +12,8 @@ var LoanPrograms;
     LoanPrograms.calculateInterestOnlyLoanPayment = calculateInterestOnlyLoanPayment;
     /*  TODO Update the calculateConventionalLoanPayment function. */
     function calculateConventionalLoanPayment(loanTerms) {
-        let interest = calculateInterestRate(loanTerms.interestRate);
-        let payment;
+        var interest = calculateInterestRate(loanTerms.interestRate);
+        var payment;
         payment =
             (loanTerms.principle * interest) /
                 (1 - Math.pow(1 / (1 + interest), loanTerms.months));
@@ -23,17 +21,21 @@ var LoanPrograms;
     }
     LoanPrograms.calculateConventionalLoanPayment = calculateConventionalLoanPayment;
     function calculateInterestRate(interestRate) {
-        let interest = interestRate / 1200;
+        var interest = interestRate / 1200;
         return interest;
     }
 })(LoanPrograms || (LoanPrograms = {}));
+/*  Module 8: Organize code using TypeScript namespaces
+    Lab Start */
 /*  TODO Add reference paths. */
+/// <reference path="module08_loans.ts" />
+/// <reference path="module08_loan-programs.ts" />
 /*  TODO Update the function calls. */
-let interestOnlyPayment = LoanPrograms.calculateInterestOnlyLoanPayment({
+var interestOnlyPayment = LoanPrograms.calculateInterestOnlyLoanPayment({
     principle: 30000,
     interestRate: 5
 });
-let conventionalLoanPayment = LoanPrograms.calculateConventionalLoanPayment({
+var conventionalLoanPayment = LoanPrograms.calculateConventionalLoanPayment({
     principle: 30000,
     interestRate: 5,
     months: 180
